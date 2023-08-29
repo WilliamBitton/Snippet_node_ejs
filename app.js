@@ -8,6 +8,8 @@ const mongoose = require('mongoose')
 const errorController = require('./controllers/errorController')
 const indexRouter = require('./routes/index')
 const app = express()
+const dotenv = require('dotenv')
+dotenv.config()
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
