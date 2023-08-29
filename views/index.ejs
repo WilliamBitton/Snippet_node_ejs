@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <%- include('includes/header.ejs') %>
+<main>
+    <% if (allPosts.length > 0) { %>
+        <div class="menu container-fluid text-center mt-4">
+            <a href="#" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Voir tous les tags</a>
+            <div class="hidden mt-4 bg-white container-fluid">
+                <% if (allTags != null && allTags != 0) { %>
+                    <div class="d-flex flex-wrap mt-1 mx-auto" style="width: 90%;">
+                        <% allTags.forEach ((tag) => { %>
+                            <a href="/search/<%= tag %>"><button class="btn btn-light m-2"><%= tag %></button></a>
+                        <% }) %>
+                        </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="d-block mx-auto" style="width: 90%;">
+        <% for (let post of allPosts) { %>
+                <div class="card post-item mb-5 mt-5 shadow p-4 pb-5">
+                    <% if (post.url) { %>
+                        <h2 class="post__title mt-5 mb-4 mx-2"><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"  href="<%= post.url%>" target="_blank"><%= post.title %></a></h2>
+                    <% } else { %>
+                        <h2 class="post__title mt-5 mb-4 mx-2"><%= post.title %></h2>
+                        <% } %>
+                    <p class="post-item fs-5 mb-4 mx-2 fw-lighter"><%= post.content %></p>
+                    <% if (post.tags != 0) { %>
+                        <div class="d-flex flex-wrap">
+                        <% post.tags.forEach ((tag) => { %>
+                    <a href="/search/<%= tag %>"><button class="btn btn-light m-2"><%= tag %></button></a>
+                    <% }) %>
+                         </div>
+                    <% } %>
+                    <div class="position-absolute d-flex top-0 end-0 mx-2 mt-2">
+                    <a href="/edit-snippet/<%= post.id %>" class="mx-2"><button class="form-control btn btn-light">Modifier</button></a>   
+                    <a href="/delete-snippet/<%= post.id %>" onclick="return confirm('Veuillez confirmer la supression')" class=""><button class="btn btn-danger fs-8">Supprimer</button></a>
+                    </div>
+                    <div class="position-absolute bottom-0 start-0 mx-2">
+                        <% if (post.updatedAt.getTime() == post.createdAt.getTime()) { %>
+                            <p class="fw-lighter mb-1 fs-6">Crée le <%= post.createdAt.toLocaleString() %></p>
+                          <% } else { %>
+                            <p class="fw-lighter mb-1 fs-6">Mis à jour le <%= post.updatedAt.toLocaleString() %></p>
+                          <% } %>
+                    </div>
+                </div>
+        <% } %>
+    </div>
+    <% } else { %>
+    <h3 class="mx-5 mt-5">Pas d'articles !</h3>
+    <% } %>
+</main>
+<%- include('includes/footer.ejs') %>

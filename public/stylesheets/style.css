@@ -1,0 +1,14 @@
+* {
+    font-family: 'Playfair Display', Times, serif;
+}
+
+.menu .hidden {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-out;
+}
+
+.menu a:hover + .hidden, .menu .hidden:hover {
+  max-height: 5000px;
+  transition: max-height 1s ease-in;
+}

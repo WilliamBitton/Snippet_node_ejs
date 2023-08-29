@@ -1,0 +1,27 @@
+<%- include('includes/head.ejs') %>
+</head>
+<%- include('includes/header.ejs') %>
+<body>
+   
+    <form action="/edit-snippet/<%= post.id %>" class="m-auto mb-5 mt-5 border-3 rounded" style="max-width: 90%; width: 500px;" method="POST">
+        <div class="border rounded p-3 shadow">
+        <h2 class="text-center mb-4">Modifier snippet <%= post.title %></h2>
+        <% if (errorMessage) { %>
+            <div class="errors alert alert-danger">
+                Veuillez entrer un titre entre 1 et 255 caractères
+            </div>
+        <% } %>
+        <label for="title" class="form-label">Titre du snippet:</label>
+        <input class="d-block m-auto w-100 mb-3 form-control" type="text" value="<%= post.title %>" name="title">
+        <label for="content" class="form-label">Contenu:</label>
+        <input class="d-block m-auto w-100 mb-3 form-control" type="text" value="<%= post.content %>" name="content">
+        <label for="url" class="form-label">URL:</label>
+        <input class="d-block m-auto w-100 mb-3 form-control" type="text" value="<%= post.url %>" name="url">
+        <label for="tags" class="form-label">Tags:</label>
+        <input class="d-block m-auto w-100 mb-5 form-control" type="text" value="<%= tags %>" name="tags">
+        <button type="submit" class="d-block m-auto w-100 form-control btn btn-dark">Sauvegarder les modifications</button>
+    </div>
+    </form>
+
+</body>
+<%- include('includes/footer.ejs') %>

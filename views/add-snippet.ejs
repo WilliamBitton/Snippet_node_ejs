@@ -1,0 +1,28 @@
+<%- include('includes/head.ejs') %>
+    </head>
+    <%- include('includes/header.ejs') %>
+
+        <body>
+
+            <form action="/add-snippet" method="POST" class="m-auto mb-5 mt-5 border-3 rounded" style="max-width: 90%; width: 500px;">
+                <div class="border rounded p-3 shadow">
+                    <h2 class="text-center mb-4">Nouveau snippet</h2>
+                    <% if (errorMessage) { %>
+                        <div class="errors alert alert-danger">
+                            Veuillez entrer un titre entre 1 et 255 caractères
+                        </div>
+                        <% } %>
+                    <label for="title" class="form-label">Titre du snippet:</label>
+                    <input class="d-block m-auto w-100 mb-3 form-control" type="text" name="title">
+                    <label for="content" class="form-label">Contenu:</label>
+                    <input class="d-block m-auto w-100 mb-3 form-control" type="text" name="content">
+                    <label for="url" class="form-label">URL:</label>
+                    <input class="d-block m-auto w-100 mb-3 form-control" type="text" name="url">
+                    <label for="tags" class="form-label">Tags:</label>
+                    <input class="d-block m-auto w-100 mb-5 form-control" type="text" name="tags" placeholder="Format: Tag1 Tag2 Tag3">
+                    <button class="d-block m-auto w-100 form-control btn btn-dark" type="submit">Sauvegarder nouveau snippet</button>
+                </div>
+            </form>
+
+        </body>
+        <%- include('includes/footer.ejs') %>
