@@ -22,11 +22,13 @@ app.use(errorController.getError)
 
 module.exports = app;
 
-mongoose.connect('mongodb+srv://Snippet:Snippet@snippet.cr1qbt2.mongodb.net/')
+const PORT = process.env.PORT || 3000
+const MONGOOSE = process.env.MONGOOSE
+mongoose.connect(MONGOOSE)
   .then(() => {
     console.log('La connexion à la base de données est établie')
 
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log('app.listen 3000')
     })
   })
