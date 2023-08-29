@@ -25,7 +25,7 @@ module.exports = app
 
 const PORT = process.env.PORT || 3000
 const MONGOOSE = process.env.MONGOOSE
-mongoose.connect('mongodb+srv://Snippet:<password>@snippet.cr1qbt2.mongodb.net/snippets?retryWrites=true&w=majority')
+mongoose.connect(MONGOOSE)
   .then(() => {
     console.log('La connexion à la base de données est établie')
 
