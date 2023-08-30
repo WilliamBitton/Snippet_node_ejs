@@ -11,6 +11,13 @@ const app = express()
 const dotenv = require('dotenv')
 dotenv.config()
 
+const cron = require('node-cron');
+const http = require('http');
+cron.schedule('*/10 * * * *', () => {
+  http.get('https://snippet-o8zu.onrender.com')
+})
+cron.start()
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(logger('dev'))
