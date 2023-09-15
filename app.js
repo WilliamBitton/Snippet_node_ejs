@@ -10,8 +10,6 @@ const indexRouter = require('./routes/index')
 const app = express()
 const dotenv = require('dotenv')
 dotenv.config()
-const cron = require('./cron')
-cron()
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
